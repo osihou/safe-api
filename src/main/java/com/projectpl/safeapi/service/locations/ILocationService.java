@@ -1,4 +1,4 @@
-package com.projectpl.safeapi.service;
+package com.projectpl.safeapi.service.locations;
 
 import com.projectpl.safeapi.entity.Location;
 

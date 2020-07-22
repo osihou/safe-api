@@ -16,18 +16,15 @@ public class LocationMapper implements RowMapper<Location> {
         location.setId(resultSet.getInt("id"));
 
         location.setName(resultSet.getString("name"));
-        location.setCity(resultSet.getString("city"));
         location.setStreet(resultSet.getString("street"));
-        location.setNum(resultSet.getString("num"));
+        location.setCity(resultSet.getString("city"));
+        location.setCountry(resultSet.getString("country"));
+
+        location.setNumber(resultSet.getString("number"));
         location.setPostal_code(resultSet.getString("postal_code"));
         location.setType(resultSet.getString("type"));
 
-        location.setSecurity_rate(resultSet.getDouble("security_rat"));
-        location.setSTAFF_WEARING_MASKS(resultSet.getDouble("STAFF_WEARING_MASKS"));
-        location.setDIST_KEPT(resultSet.getDouble("DIST_KEPT"));
-        location.setOther(resultSet.getDouble("other"));
-
-        location.setOPEN(resultSet.getBoolean("IsOPEN"));
+        location.setIs_open(resultSet.getString("is_open"));
 
         location.setLatitude(resultSet.getDouble("latitude"));
         location.setLongitude(resultSet.getDouble("longitude"));
