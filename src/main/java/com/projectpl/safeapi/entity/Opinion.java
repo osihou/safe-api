@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Opinion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_score;
 
     private String device_id;
@@ -20,6 +20,10 @@ public class Opinion {
     private Integer id_location;
 
     private String opinion;
+
+    public Opinion(){
+
+    }
 
     public Opinion(
             Integer id_score,

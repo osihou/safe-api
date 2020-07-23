@@ -16,6 +16,7 @@ public class LocationController {
     Iterable<Location> getAllLocations(){
         return locationService.findAll();
     }
+
     @GetMapping("/locations/id/{id}")
     Location getLocationById(@PathVariable("id") int id){
         return locationService.findById(id);

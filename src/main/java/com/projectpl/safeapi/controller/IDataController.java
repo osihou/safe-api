@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public interface IDataController {
 
-    Location insertLocation(@RequestBody Location newLocation);
+    Location insertLocation(
+            @RequestBody Location newLocation,
+            @PathVariable("key") String key);
 
-    void deleteLocationById(@PathVariable int id);
+    void deleteLocationById(
+            @PathVariable int id,
+            @PathVariable("key") String key);
 }
