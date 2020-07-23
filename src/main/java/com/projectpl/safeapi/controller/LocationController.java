@@ -12,24 +12,50 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    @GetMapping("/locations/all")
-    Iterable<Location> getAllLocations(){
-        return locationService.findAll();
+    @GetMapping("/locations/all/{key}")
+    Iterable<Location> getAllLocations(
+            @PathVariable("key") String key
+    ){
+        if(key.equals("secret_key")){
+            return locationService.findAll();
+        }
+        return null;
     }
 
-    @GetMapping("/locations/id/{id}")
-    Location getLocationById(@PathVariable("id") int id){
-        return locationService.findById(id);
+    @GetMapping("/locations/id/{id}/{key}")
+    Location getLocationById(
+            @PathVariable("id") int id,
+            @PathVariable("key") String key
+    ){
+        if(key.equals("secret_key")){
+            return locationService.findById(id);
+        }
+        return null;
     }
 
-    @GetMapping("/locations/name/{name}")
-    Location getLocationByName(@PathVariable("name") String name){
-        return locationService.findByName(name);
+    @GetMapping("/locations/name/{name}/{key}")
+    Location getLocationByName(
+            @PathVariable("name") String name,
+            @PathVariable("key") String key
+            ){
+
+        if(key.equals("secret_key")){
+            return locationService.findByName(name);
+        }
+        return null;
     }
 
-    @GetMapping("/locations/city/{city}")
-    Iterable<Location> getLocationByCity(@PathVariable("city") String city){
-        return locationService.findByCity(city);
+    @GetMapping("/locations/city/{city}/{key}")
+    Iterable<Location> getLocationByCity(
+            @PathVariable("city") String city,
+            @PathVariable("key") String key
+            ){
+
+        if(key.equals("secret_key")){
+            return locationService.findByCity(city);
+        }
+        return null;
+
     }
 
 
