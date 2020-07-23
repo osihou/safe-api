@@ -1,8 +1,7 @@
 package com.projectpl.safeapi.controller;
 
 import com.projectpl.safeapi.entity.Location;
-import com.projectpl.safeapi.exception.LocationNotFoundException;
-import com.projectpl.safeapi.service.LocationService;
+import com.projectpl.safeapi.service.locations.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +16,7 @@ public class LocationController {
     Iterable<Location> getAllLocations(){
         return locationService.findAll();
     }
+
     @GetMapping("/locations/id/{id}")
     Location getLocationById(@PathVariable("id") int id){
         return locationService.findById(id);

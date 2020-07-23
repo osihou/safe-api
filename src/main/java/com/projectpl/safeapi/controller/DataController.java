@@ -1,7 +1,9 @@
 package com.projectpl.safeapi.controller;
 
 import com.projectpl.safeapi.entity.Location;
-import com.projectpl.safeapi.service.LocationService;
+import com.projectpl.safeapi.entity.Opinion;
+import com.projectpl.safeapi.service.locations.LocationService;
+import com.projectpl.safeapi.service.opinions.OpinionService;
 import com.projectpl.safeapi.service.transactions.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,15 +27,43 @@ public class DataController implements IDataController {
     @Autowired
     private LocationService locationService;
 
-    @PostMapping("/locations")
-    public Location insertLocation(@RequestBody Location newLocation){
+    @PostMapping("/add/locations/{key}")
+    public Location insertLocation(
+            @RequestBody Location newLocation,
+            @PathVariable("key") String key
+    ){
         return locationService.save(newLocation);
     }
 
-    @DeleteMapping("/locations/{id}")
-    public void deleteLocationById(@PathVariable int id) {
-        locationService.deleteById(id);
+    @DeleteMapping("/del/locations/{id}/{key}")
+    public void deleteLocationById(
+            @PathVariable int id,
+            @PathVariable("key") String key
+    ) {
+        if(key.equals("secret_key")){
+            locationService.deleteById(id);
+        }
     }
+
+    @Autowired
+    private OpinionService opinionService;
+
+    @PostMapping("/add/opinions/{key}")
+    public Opinion insertOpinions(
+            @RequestBody Opinion newOpinion,
+            @PathVariable("key") String key
+    ){
+        if(key.equals("secret_key")){
+            return opinionService.save(newOpinion);
+        }
+
+        return null;
+
+    }
+
+
+
+
 
 
 

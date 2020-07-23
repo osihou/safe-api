@@ -4,24 +4,23 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "test_table")
+@Table(name = "locations_table")
 public class Location implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
-    private String city;
     private String street;
-    private String num;
+    private String city;
+    private String country;
+    private String number;
     private String postal_code;
     private String type;
-    private double security_rat;
-    private double STAFF_WEARING_MASKS;
-    private double SANITIZER_AV;
-    private double DIST_KEPT;
-    private double other;
-    private boolean IsOPEN;
+
+    private String is_open;
+
     private double latitude;
     private double longitude;
 
@@ -29,180 +28,123 @@ public class Location implements Serializable {
 
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Location(
             String name,
-            String city,
             String street,
-            String num,
+            String city,
+            String country,
+            String number,
             String postal_code,
             String type,
-            double security_rate,
-            double STAFF_WEARING_MASKS,
-            double SANITIZER_AV,
-            double DIST_KEPT,
-            double other,
-            boolean IsOPEN,
+
+            String is_open,
+
             double latitude,
             double longitude) {
 
 
         this.name = name;
-        this.city = city;
         this.street = street;
-        this.num = num;
+        this.city = city;
+        this.country = country;
+        this.number = number;
         this.postal_code = postal_code;
         this.type = type;
 
-        this.security_rat = security_rate;
-        this.STAFF_WEARING_MASKS = STAFF_WEARING_MASKS;
-        this.SANITIZER_AV = SANITIZER_AV;
-        this.DIST_KEPT = DIST_KEPT;
-        this.other = other;
-
-        this.IsOPEN = IsOPEN;
+        this.is_open = is_open;
 
         this.latitude = latitude;
         this.longitude = longitude;
     }
+    //ID
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    //NAME
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+    //STREET
     public String getStreet() {
         return street;
     }
-
     public void setStreet(String street) {
         this.street = street;
     }
 
-    public String getNum() {
-        return num;
+    //CITY
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setNum(String num) {
-        this.num = num;
+    //COUNTRY
+    public String getCountry() {
+        return country;
+    }
+    public void setCountry(String country) {
+        this.country = country;
     }
 
+    //NUMBER
+    public String getNumber() {
+        return number;
+    }
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    //POSTAL_CODE
     public String getPostal_code() {
         return postal_code;
     }
-
     public void setPostal_code(String postal_code) {
         this.postal_code = postal_code;
     }
 
+    //TYPE
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
 
-    //sec rats
-
-    public double getSecurity_rate() {
-        return security_rat;
+    //IS_OPEN
+    public String getIs_open() {
+        return is_open;
+    }
+    public void setIs_open(String is_open) {
+        this.is_open = is_open;
     }
 
-    public void setSecurity_rate(double security_rate) {
-        this.security_rat = security_rate;
-    }
-
-    public double getSTAFF_WEARING_MASKS() {
-        return STAFF_WEARING_MASKS;
-    }
-
-    public void setSTAFF_WEARING_MASKS(double STAFF_WEARING_MASKS) {
-        this.STAFF_WEARING_MASKS = STAFF_WEARING_MASKS;
-    }
-
-    public double getSANITIZER_AV() {
-        return SANITIZER_AV;
-    }
-
-    public void setSANITIZER_AV(double SANITIZER_AV) {
-        this.SANITIZER_AV = SANITIZER_AV;
-    }
-
-
-
-    public double getDIST_KEPT() {
-        return DIST_KEPT;
-    }
-
-    public void setDIST_KEPT(double DIST_KEPT) {
-        this.DIST_KEPT = DIST_KEPT;
-    }
-
-    public double getOther() {
-        return other;
-    }
-
-    public void setOther(double other) {
-        this.other = other;
-    }
-
-
-
-    //bool for open
-
-    public boolean isOPEN() {
-        return IsOPEN;
-    }
-
-    public void setOPEN(boolean OPEN) {
-        IsOPEN = OPEN;
-    }
-
-
-
-    //G&S for location
-
+    //LATITUDE
     public double getLatitude() {
         return latitude;
     }
-
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
+    //LONGITUDE
     public double getLongitude() {
         return longitude;
     }
-
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "name='" + name + '\'' +
-                "city=" + city +
-                '}';
-    }
 
 
 }

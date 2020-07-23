@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class TransactionService {
 
-    private final String TABLE_LOCATION_NAME = "test_table";
+    private final String TABLE_LOCATION_NAME = "locations_table";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -17,6 +17,7 @@ public class TransactionService {
     @Transactional
     public void removeAll(){
         jdbcTemplate.execute("DELETE FROM "+TABLE_LOCATION_NAME);
+        //jdbcTemplate.execute("ALTER TABLE locations_table ALTER COLUMN longitude NUMERIC(9,6) NULL");
     }
 
     public Iterable<String> getCities(String country) {
@@ -25,7 +26,7 @@ public class TransactionService {
     }
 
     public Iterable<Location> getTopPlacesInCity(String country, String city, String num){
-        return jdbcTemplate.query("SELECT TOP "+num+" * FROM "+TABLE_LOCATION_NAME+" WHERE city = '"+city+"' ORDER BY security_rat" , new LocationMapper());
+        return jdbcTemplate.query("SELECT TOP "+num+" * FROM "+TABLE_LOCATION_NAME+" WHERE city = '"+city+"'" , new LocationMapper());
 
     }
 }
