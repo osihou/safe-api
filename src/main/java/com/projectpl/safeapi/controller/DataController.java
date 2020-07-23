@@ -32,7 +32,13 @@ public class DataController implements IDataController {
             @RequestBody Location newLocation,
             @PathVariable("key") String key
     ){
-        return locationService.save(newLocation);
+
+        if(key.equals("secret_key")){
+            return locationService.save(newLocation);
+        }
+
+        return null;
+
     }
 
     @DeleteMapping("/del/locations/{id}/{key}")
