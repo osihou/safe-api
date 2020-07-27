@@ -11,8 +11,9 @@
 
 	<groupId>com.projectpl</groupId>
 	<artifactId>safe-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<name>safe-api</name>
+	<packaging>war</packaging>
 	<description>Api for Spring Boot</description>
 
 	<properties>
@@ -43,11 +44,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter</artifactId>
 		</dependency>
 
 		<dependency>
