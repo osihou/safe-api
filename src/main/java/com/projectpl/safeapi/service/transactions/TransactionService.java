@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class TransactionService {
 
@@ -28,5 +30,9 @@ public class TransactionService {
     public Iterable<Location> getTopPlacesInCity(String country, String city, String num){
         return jdbcTemplate.query("SELECT TOP "+num+" * FROM "+TABLE_LOCATION_NAME+" WHERE city = '"+city+"'" , new LocationMapper());
 
+    }
+
+    public int getIdWhereNameStreet(String name, String street) {
+        return jdbcTemplate.query("SELECT ID FROM"+TABLE_LOCATION_NAME+" WHERE NAME= '"+name+"'AND WHERE STREET= '"+street+"'", new LocationMapper()).get(0).getId();
     }
 }

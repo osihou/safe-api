@@ -41,4 +41,17 @@ public class TransactionController {
 
     }
 
+    @GetMapping("/functions/get-id_where-name-street/{name}/{street}/{key}")
+    int getIdWhereNameStreet(
+            @PathVariable(value = "name") String name,
+            @PathVariable(value = "name") String street,
+            @PathVariable(value = "key") String key
+    ){
+        if(key.equals("secret_key")){
+            return transactionService.getIdWhereNameStreet(name,street);
+        }
+
+        return 0;
+    }
+
 }

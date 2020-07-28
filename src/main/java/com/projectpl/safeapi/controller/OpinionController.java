@@ -1,11 +1,10 @@
 package com.projectpl.safeapi.controller;
 
+import com.projectpl.safeapi.entity.Location;
 import com.projectpl.safeapi.entity.Opinion;
 import com.projectpl.safeapi.service.opinions.OpinionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OpinionController {
@@ -19,6 +18,20 @@ public class OpinionController {
     ){
         if(key.equals("secret_key")){
             return opinionService.findAll();
+        }
+
+        return null;
+
+    }
+
+    @PostMapping("/add/opinions/{key}")
+    public Opinion insertOpinion(
+            @RequestBody Opinion newOpinion,
+            @PathVariable("key") String key
+    ){
+
+        if(key.equals("secret_key")){
+            return opinionService.save(newOpinion);
         }
 
         return null;
