@@ -41,7 +41,7 @@ public class TransactionController {
 
     }
 
-    @GetMapping("/functions/get-id_where-name-street/{name}/{street}/{key}")
+    @GetMapping("/functions/get-id-where-name-street/{name}/{street}/{key}")
     int getIdWhereNameStreet(
             @PathVariable(value = "name") String name,
             @PathVariable(value = "name") String street,
