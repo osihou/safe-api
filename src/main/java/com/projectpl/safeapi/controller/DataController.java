@@ -14,11 +14,6 @@ public class DataController implements IDataController {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping("/")
-    String getDefault(){
-        return "Welcome";
-    }
-
     @GetMapping("/dev-functions/dall")
     String deleteAll(@RequestParam(value = "key", defaultValue = "none") String key){
         if(key.equals("eol")){

@@ -1,21 +1,14 @@
 package com.projectpl.safeapi.entity;
 
-
-import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
-
+import javax.persistence.*;
 import java.io.Serializable;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "locations_table")
 public class Location implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
