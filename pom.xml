@@ -74,6 +74,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -85,13 +91,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -115,6 +114,13 @@
 			<version>2.3.1.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+<!--			<scope>provided</scope>-->
+		</dependency>
+
 
 	</dependencies>
 
@@ -131,7 +137,9 @@
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>1.9.81</version>
 				<configuration>
-					<enableJarClasses>false</enableJarClasses>
+
+					<project>stay-safe-284310</project>
+
 					<version>${app.version}</version>
 				</configuration>
 			</plugin>

@@ -1,10 +1,13 @@
 package com.projectpl.safeapi.entity;
 
+
 import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Entity
 @Table(name = "opinions_table")
-public class Opinion {
+public class Opinion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
