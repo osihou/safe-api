@@ -54,19 +54,6 @@ public class DataController implements IDataController {
     @Autowired
     private OpinionService opinionService;
 
-    @PostMapping("/add/opinions/{key}")
-    public Opinion insertOpinions(
-            @RequestBody Opinion newOpinion,
-            @PathVariable("key") String key
-    ){
-        if(key.equals("secret_key")){
-            return opinionService.save(newOpinion);
-        }
-
-        return null;
-
-    }
-
 
 
 

@@ -31,4 +31,5 @@ public class LocationMapper implements RowMapper<Location> {
 
         return location;
     }
+
 }
