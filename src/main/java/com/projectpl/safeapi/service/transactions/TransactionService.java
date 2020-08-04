@@ -33,6 +33,6 @@ public class TransactionService {
     }
 
     public int getIdWhereNameStreet(String name, String street) {
-        return jdbcTemplate.query("SELECT ID FROM"+TABLE_LOCATION_NAME+" WHERE NAME= '"+name+"'AND WHERE STREET= '"+street+"'", new LocationMapper()).get(0).getId();
+        return jdbcTemplate.query("SELECT * FROM "+TABLE_LOCATION_NAME+" WHERE name='"+name+"' AND street='" + street + "'", new LocationMapper()).get(0).getId();
     }
 }

@@ -53,5 +53,4 @@ public class DataController implements IDataController {
     @Autowired
     private OpinionService opinionService;
 
-
 }
