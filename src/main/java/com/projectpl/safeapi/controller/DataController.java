@@ -22,6 +22,7 @@ public class DataController implements IDataController {
         }else{
             return "Please provide key";
         }
+
     }
 
     @Autowired
@@ -36,9 +37,7 @@ public class DataController implements IDataController {
         if(key.equals("secret_key")){
             return locationService.save(newLocation);
         }
-
         return null;
-
     }
 
     @DeleteMapping("/del/locations/{id}/{key}")
@@ -53,14 +52,5 @@ public class DataController implements IDataController {
 
     @Autowired
     private OpinionService opinionService;
-
-
-
-
-
-
-
-
-
 
 }
