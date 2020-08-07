@@ -1,7 +1,7 @@
 package com.projectpl.safeapi.service.opinions;
 
-import com.projectpl.safeapi.entity.Location;
-import com.projectpl.safeapi.entity.Opinion;
+import com.projectpl.safeapi.persistance.entity.Location;
+import com.projectpl.safeapi.persistance.entity.Opinion;
 
 public interface IOpinionService {
     Location findById(int id);

@@ -1,4 +1,4 @@
-package com.projectpl.safeapi.entity;
+package com.projectpl.safeapi.persistance.entity;
 
 import javax.persistence.*;
 

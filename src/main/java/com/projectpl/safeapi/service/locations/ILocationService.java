@@ -1,8 +1,6 @@
 package com.projectpl.safeapi.service.locations;
 
-import com.projectpl.safeapi.entity.Location;
-
-import java.util.List;
+import com.projectpl.safeapi.persistance.entity.Location;
 
 public interface ILocationService {
 

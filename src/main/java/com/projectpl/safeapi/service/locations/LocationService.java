@@ -2,9 +2,9 @@ package com.projectpl.safeapi.service.locations;
 
 
 
-import com.projectpl.safeapi.entity.Location;
-import com.projectpl.safeapi.exception.LocationNotFoundException;
-import com.projectpl.safeapi.repository.LocationRepository;
+import com.projectpl.safeapi.persistance.entity.Location;
+import com.projectpl.safeapi.exceptions.LocationNotFoundException;
+import com.projectpl.safeapi.persistance.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
