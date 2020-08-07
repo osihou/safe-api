@@ -1,4 +1,4 @@
-package com.projectpl.safeapi.exception;
+package com.projectpl.safeapi.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

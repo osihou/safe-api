@@ -1,6 +1,6 @@
 package com.projectpl.safeapi.service.transactions;
 
-import com.projectpl.safeapi.entity.Location;
+import com.projectpl.safeapi.persistance.entity.Location;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
