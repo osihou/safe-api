@@ -2,48 +2,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<!--SPRING BOOT STARTER PARENT	-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.1.RELEASE</version>
 		<relativePath/>
 	</parent>
-
+	<!--	ATTRIBUTES	-->
 	<groupId>com.projectpl</groupId>
 	<artifactId>safe-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>safe-api</name>
 	<description>Api for Spring Boot</description>
-
+	<!--	PROPERTIES	-->
 	<properties>
 		<java.version>1.8</java.version>
 		<azure.version>2.3.1</azure.version>
+		<mssql.version>8.2.2.jre8</mssql.version>
 	</properties>
-
+	<!--	DEPENDENCIES	-->
 	<dependencies>
+	<!--	SPRING BOOT STARTER JDBC	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
+	<!--	MSSQL JDBC	-->
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
-			<version>8.2.2.jre8</version>
+			<version>${mssql.version}</version>
 		</dependency>
-
+	<!--	SPRING BOOT STARTER THYMELEAF	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+	<!--	SPRING BOOT STARTER SECURITY	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+	<!--	SPRING BOOT STARTER WEB	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+	<!--	SPRING BOOT STARTER DATA JPA	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+	<!--	SPRING BOOT STARTER MAIL	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+	<!--	SPRING CLOUD STARTER AZURE SPRING CLOUD CLIENT	-->
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+	<!--	AZURE SPRING BOOT STARTER	-->
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>azure-spring-boot-starter</artifactId>
 		</dependency>
-
+	<!--	SPRING BOOT STARTER TEST	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -56,7 +83,8 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
+	<!--	DEPENDENCY MANAGEMENT	-->
+	<!--	AZURE SPRING BOOT BOM	-->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -68,7 +96,8 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+	<!--	BUILD	-->
+	<!--	SPRING BOOT MAVEN PLUGIN	-->
 	<build>
 		<plugins>
 			<plugin>
@@ -77,6 +106,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!--	PROFILES	-->
 	<profiles>
 		<profile>
 			<id>cloud</id>
@@ -88,7 +118,4 @@
 			</dependencies>
 		</profile>
 	</profiles>
-
-
-
 </project>
