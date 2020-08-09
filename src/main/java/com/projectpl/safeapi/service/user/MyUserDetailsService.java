@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -43,7 +44,7 @@ public class MyUserDetailsService implements UserDetailsService {
                     accountNonExpired,
                     credentialsNonExpired,
                     accountNonLocked,
-                    getAuthorities(user.getRoles()));
+                    getAuthorities(Collections.singletonList("ROLE_USER")));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
