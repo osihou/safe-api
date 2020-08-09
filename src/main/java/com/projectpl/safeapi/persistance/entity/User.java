@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "user_table")
 public class User {
 
     @Id
@@ -18,7 +19,18 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
 
-    private List<String> roles;
+    //private List<String> roles;
+
+    private String role;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
 
     public User(){
@@ -66,13 +78,21 @@ public class User {
         return email;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public String getRole() {
+        return role;
     }
 
-    public List<String> getRoles() {
-        return roles;
+    public void setRole(String role) {
+        this.role = role;
     }
+
+//    public void setRoles(List<String> roles) {
+//        this.roles = roles;
+//    }
+//
+//    public List<String> getRoles() {
+//        return roles;
+//    }
 
 
 }
