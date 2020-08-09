@@ -3,14 +3,14 @@ package com.projectpl.safeapi.service.user;
 
 import com.projectpl.safeapi.persistance.entity.User;
 import com.projectpl.safeapi.persistance.dto.UserDto;
-import com.projectpl.safeapi.exceptions.UserAlreadyExistException;
+import com.projectpl.safeapi.errors.exceptions.UserAlreadyExistException;
 import com.projectpl.safeapi.persistance.entity.VerificationToken;
 import com.projectpl.safeapi.persistance.repository.UserRepository;
 import com.projectpl.safeapi.persistance.repository.VerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.UUID;
 
@@ -23,26 +23,25 @@ public class UserService implements IUserService {
     @Autowired
     private VerificationTokenRepository verificationTokenRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-
-    @Transactional
     @Override
-    public User registerNewUserAccount(UserDto userDto)
-            throws UserAlreadyExistException {
-
-        if (emailExists(userDto.getEmail())) {
-            throw new UserAlreadyExistException(
-                    "There is an account with that email address: "
-                            + userDto.getEmail());
+    public User registerNewUserAccount(final UserDto accountDto) throws UserAlreadyExistException {
+        if (emailExists(accountDto.getEmail())) {
+            throw new UserAlreadyExistException("There is an account with that email address: " + accountDto.getEmail());
         }
-        User user = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setPassword(userDto.getPassword());
-        user.setEmail(userDto.getEmail());
-        user.setRoles(Collections.singletonList("ROLE_USER"));
+        final User user = new User();
+
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
+        user.setEmail(accountDto.getEmail());
+        user.setRole("ROLE_USER");
         return userRepository.save(user);
     }
+
+
 
     @Override
     public void createVerificationToken(User user, String token) {
@@ -68,6 +67,11 @@ public class UserService implements IUserService {
     public User getUser(String verificationToken) {
         User user = verificationTokenRepository.findByToken(verificationToken).getUser();
         return user;
+    }
+
+    @Override
+    public VerificationToken generateNewVerificationToken(String existingToken) {
+        return null;
     }
 
     private boolean emailExists(String email) {

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <script type="text/javascript">
 	function validate() {
@@ -19,11 +21,13 @@
 	        return false;
 	    }
 	}
-	</script>
+
+    </script>
 </head>
 <body>
 <div th:if="${param.error != null}"
-     th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">error</div>
+     th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">error
+</div>
 <h1>Login</h1>
 <form name='f' action="login" method='POST'>
     <table>
@@ -33,10 +37,10 @@
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type='password' name='password' /></td>
+            <td><input type='password' name='password'/></td>
         </tr>
         <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
+            <td><input name="submit" type="submit" value="submit"/></td>
         </tr>
     </table>
 </form>

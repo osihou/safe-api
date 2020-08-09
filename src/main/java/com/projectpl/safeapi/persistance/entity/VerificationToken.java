@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
+@Table(name = "verification_token_table")
 public class VerificationToken {
 
     private static final int EXPIRATION = 60 * 24;

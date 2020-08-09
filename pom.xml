@@ -20,6 +20,8 @@
 		<java.version>1.8</java.version>
 		<azure.version>2.3.1</azure.version>
 		<mssql.version>8.2.2.jre8</mssql.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 	<!--	DEPENDENCIES	-->
 	<dependencies>
@@ -65,10 +67,22 @@
 			<artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
 			<version>2.0.0</version>
 		</dependency>
+	<!--	PASSAY	-->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>1.0</version>
+		</dependency>
 	<!--	AZURE SPRING BOOT STARTER	-->
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>azure-spring-boot-starter</artifactId>
+		</dependency>
+	<!--	ITEXT	-->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>4.2.2</version>
 		</dependency>
 	<!--	SPRING BOOT STARTER TEST	-->
 		<dependency>

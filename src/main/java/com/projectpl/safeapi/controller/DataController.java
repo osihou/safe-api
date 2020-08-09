@@ -1,21 +1,18 @@
 package com.projectpl.safeapi.controller;
 
-import com.projectpl.safeapi.persistance.entity.User;
-import com.projectpl.safeapi.persistance.dto.UserDto;
-import com.projectpl.safeapi.exceptions.UserAlreadyExistException;
-import com.projectpl.safeapi.security.registration.OnRegistrationCompleteEvent;
+import com.projectpl.safeapi.persistance.entity.Opinion;
 import com.projectpl.safeapi.service.email.EmailService;
-import com.projectpl.safeapi.service.user.UserService;
+import com.projectpl.safeapi.service.opinions.IOpinionService;
+import com.projectpl.safeapi.utils.PdfRaportGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
+import java.util.List;
 
 @RestController
 public class DataController implements IDataController {
@@ -29,13 +26,36 @@ public class DataController implements IDataController {
         return "Its working";
     }
 
-    @GetMapping("/testMail")
-    void testMail() {
+    @GetMapping("/test_mail")
+    String testMail() {
+        //emailService.sendMail("okeonx@gmail.com", "test", "test test \n test test");
+        emailService.sendPreConfiguredMail("Weź się do roboty frajerze");
+        return "Email sent";
 
-        emailService.sendMail("safe_sashay_cloud_test@outlook.com", "test", "test test \n test test");
+    }
 
-        emailService.sendPreConfiguredMail("Ho ho ho");
 
+    @Autowired
+    private IOpinionService opinionService;
+
+    @RequestMapping(
+            value = "/pdf_report",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> opinionsReport() {
+
+        List<Opinion> opinions = (List<Opinion>) opinionService.findAll();
+
+        ByteArrayInputStream bis = PdfRaportGenerator.opinionsReport(opinions);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=opinionsreport.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
     }
 
 

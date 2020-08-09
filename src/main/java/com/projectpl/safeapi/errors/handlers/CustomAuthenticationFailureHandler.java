@@ -1,4 +1,4 @@
-package com.projectpl.safeapi.exceptions;
+package com.projectpl.safeapi.errors.handlers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

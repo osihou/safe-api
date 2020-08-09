@@ -2,6 +2,7 @@ package com.projectpl.safeapi.persistance.dto;
 
 import com.projectpl.safeapi.security.validation.PasswordMatches;
 import com.projectpl.safeapi.security.validation.ValidEmail;
+import com.projectpl.safeapi.security.validation.ValidPassword;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ public class UserDto {
     @NotEmpty
     private String lastName;
 
+    @ValidPassword
     @NotNull
     @NotEmpty
     private String password;
