@@ -36,4 +36,8 @@ public class ProductService implements IProductService {
     public Product save(Product product) {
         return productRepository.save(product);
     }
+
+    public Product create(Product product) {
+        return productRepository.save(product);
+    }
 }

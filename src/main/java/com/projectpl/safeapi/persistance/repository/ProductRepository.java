@@ -5,6 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import com.projectpl.safeapi.persistance.entity.Product;
 
+import java.util.Optional;
+
 @Repository("productRepository")
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 }
