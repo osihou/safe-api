@@ -1,8 +1,10 @@
 package com.projectpl.safeapi.persistance.repository;
 
 
-import com.projectpl.safeapi.persistance.entity.Product;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import com.projectpl.safeapi.persistance.entity.Product;
 
-public interface ProductRepository extends CrudRepository<Product, Long> {
+@Repository("productRepository")
+public interface ProductRepository extends CrudRepository<Product, Integer> {
 }

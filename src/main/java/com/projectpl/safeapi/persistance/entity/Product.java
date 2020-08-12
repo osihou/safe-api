@@ -1,42 +1,45 @@
 package com.projectpl.safeapi.persistance.entity;
-
-
-
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "k_product")
+@Table(name = "product")
+
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @NotNull(message = "Product name is required.")
-    @Basic(optional = false)
+    @Column
     private String name;
 
-    private Double price;
+    @Column
+    private BigDecimal price;
 
-    private String pictureUrl;
+    @Column
+    private String type;
 
-    public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price, String pictureUrl) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.pictureUrl = pictureUrl;
-    }
+    @Column
+    private int quantity;
 
-    public Product() {
-    }
+    @Column
+    private String description;
 
-    public Long getId() {
+    @Column
+    private boolean status;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
+
         this.id = id;
     }
 
@@ -47,20 +50,45 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Double getPrice() {
+    
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public String getPictureUrl() {
-        return pictureUrl;
+    public String getType() {
+        return type;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    public void setType(String type) {
+        this.type = type;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
 }
