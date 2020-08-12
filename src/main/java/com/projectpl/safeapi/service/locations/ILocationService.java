@@ -6,10 +6,6 @@ public interface ILocationService {
 
     Location findById(int id);
 
-    Location findByName(String city);
-
-    Iterable<Location> findByCity(String city);
-
     Iterable<Location> findAll();
 
     Location save(Location newLocation);

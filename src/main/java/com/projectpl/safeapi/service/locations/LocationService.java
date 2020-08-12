@@ -22,19 +22,6 @@ public class LocationService implements  ILocationService{
                 .orElseThrow(() -> new LocationNotFoundException(id));
     }
 
-    @Override
-    public Location findByName(String name) {
-        return locationRepository.findByName(name);
-    }
-
-    @Override
-    public Iterable<Location> findByCity(String city) {
-        return locationRepository.findByCity(city);
-    }
-
-
-
-
     public Iterable<Location> findAll() {
         return locationRepository.findAll();
     }

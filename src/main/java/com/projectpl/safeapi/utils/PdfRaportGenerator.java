@@ -2,6 +2,7 @@ package com.projectpl.safeapi.utils;
 
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -18,6 +19,8 @@ public class PdfRaportGenerator {
 
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+
 
         try {
 
@@ -49,13 +52,13 @@ public class PdfRaportGenerator {
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(String.valueOf(opinion.getDist_kept())));
+                cell = new PdfPCell(new Phrase(String.valueOf("")));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(String.valueOf(opinion.getSanitizer_av())));
+                cell = new PdfPCell(new Phrase(String.valueOf("")));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPaddingRight(5);
@@ -64,7 +67,15 @@ public class PdfRaportGenerator {
 
             PdfWriter.getInstance(document, out);
             document.open();
+            document.add(
+                    new Paragraph("Some more text on the first page with different color and font type.",
+                    FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD, new CMYKColor(0, 255, 0, 0))));
             document.add(table);
+//            List unorderedList = new List();
+//            unorderedList.add(new ListItem("Item 1"));
+//            unorderedList.add(new ListItem("Item 2"));
+//            unorderedList.add(new ListItem("Item 3"));
+//            document.add(unorderedList);
 
             document.close();
 

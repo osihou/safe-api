@@ -1,6 +1,7 @@
 package com.projectpl.safeapi.service.user;
 
 
+import com.projectpl.safeapi.errors.exceptions.EmailExistsException;
 import com.projectpl.safeapi.persistance.entity.User;
 import com.projectpl.safeapi.persistance.dto.UserDto;
 import com.projectpl.safeapi.errors.exceptions.UserAlreadyExistException;
@@ -27,7 +28,8 @@ public class UserService implements IUserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public User registerNewUserAccount(final UserDto accountDto) throws UserAlreadyExistException {
+    public User registerNewUserClientAccount(final UserDto accountDto) throws UserAlreadyExistException {
+
         if (emailExists(accountDto.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email address: " + accountDto.getEmail());
         }
@@ -37,10 +39,26 @@ public class UserService implements IUserService {
         user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
-        user.setRole("ROLE_USER");
+        user.setRole("ROLE_CLIENT");
         return userRepository.save(user);
     }
 
+    @Override
+    public User registerNewUserStoreAccount(UserDto accountDto) throws UserAlreadyExistException {
+
+        if (emailExists(accountDto.getEmail())) {
+            throw new UserAlreadyExistException("There is an account with that email address: " + accountDto.getEmail());
+        }
+
+        final User user = new User();
+
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
+        user.setEmail(accountDto.getEmail());
+        user.setRole("ROLE_STORE");
+        return userRepository.save(user);
+    }
 
 
     @Override
