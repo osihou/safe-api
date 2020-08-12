@@ -17,27 +17,13 @@ import java.util.List;
 @RestController
 public class DataController implements IDataController {
 
-    @Autowired
-    private EmailService emailService;
-
-
     @GetMapping("/home")
     String home(){
         return "Its working";
     }
 
-    @GetMapping("/test_mail")
-    String testMail() {
-        //emailService.sendMail("okeonx@gmail.com", "test", "test test \n test test");
-        emailService.sendPreConfiguredMail("Weź się do roboty frajerze");
-        return "Email sent";
-
-    }
-
-
     @Autowired
     private IOpinionService opinionService;
-
     @RequestMapping(
             value = "/pdf_report",
             method = RequestMethod.GET,

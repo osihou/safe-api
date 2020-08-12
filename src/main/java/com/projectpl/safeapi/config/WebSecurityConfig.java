@@ -1,5 +1,4 @@
 package com.projectpl.safeapi.config;
-
 import com.projectpl.safeapi.service.user.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authProvider());
     }
 
-
-
-
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
@@ -45,8 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .defaultSuccessUrl("/homepage.html")
                     .failureUrl("/login?error=true")
-                    //.successHandler(myAuthenticationSuccessHandler)
-                    //.failureHandler(authenticationFailureHandler)
+                   // .successHandler(customLoginAuthenticationSuccessHandler)
+                    //.failureHandler(customAuthenticationFailureHandler)
                     //.authenticationDetailsSource(authenticationDetailsSource)
                 .permitAll()
                     .and()

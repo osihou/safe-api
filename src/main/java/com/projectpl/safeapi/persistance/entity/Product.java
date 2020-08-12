@@ -1,5 +1,4 @@
 package com.projectpl.safeapi.persistance.entity;
-
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "product")
+
 public class Product {
 
     @Id
@@ -39,6 +39,7 @@ public class Product {
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
@@ -49,7 +50,7 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public BigDecimal getPrice() {
         return price;
     }

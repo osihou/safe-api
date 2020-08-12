@@ -15,6 +15,8 @@ public class User {
     private String lastName;
     private String password;
     private String email;
+    private String address;
+
 
     @Column(name = "enabled")
     private boolean enabled;
@@ -86,13 +88,11 @@ public class User {
         this.role = role;
     }
 
-//    public void setRoles(List<String> roles) {
-//        this.roles = roles;
-//    }
-//
-//    public List<String> getRoles() {
-//        return roles;
-//    }
+    public String getAddress() {
+        return address;
+    }
 
-
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

@@ -7,7 +7,12 @@ import com.projectpl.safeapi.errors.exceptions.UserAlreadyExistException;
 import com.projectpl.safeapi.persistance.entity.VerificationToken;
 
 public interface IUserService {
-    User registerNewUserAccount(UserDto userDto)
+
+
+    User registerNewUserClientAccount(UserDto userDto)
+            throws UserAlreadyExistException, EmailExistsException;
+
+    User registerNewUserStoreAccount(UserDto userDto)
             throws UserAlreadyExistException, EmailExistsException;
 
     void createVerificationToken(User user, String token);
