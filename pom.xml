@@ -42,11 +42,6 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>${mssql.version}</version>
 		</dependency>
-	<!--	SPRING BOOT STARTER THYMELEAF	-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
 	<!--	SPRING BOOT STARTER SECURITY	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -62,19 +57,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- JSTL tag lib -->
+		<!-- JSTL TAG LIB -->
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
 			<version>1.2.1</version>
 		</dependency>
-
+	<!--	TAGLIBS STANDARD	-->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		<!-- Tomcat for JSP rendering -->
+		<!-- TOMCAT FOR JSP RENDERING -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
