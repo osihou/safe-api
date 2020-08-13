@@ -13,6 +13,7 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
+
     @GetMapping(
             path = "/location/all",
             produces = MediaType.APPLICATION_JSON_VALUE
@@ -22,10 +23,10 @@ public class LocationController {
     }
 
     @GetMapping(
-            path = "/location/{key}",
+            path = "/location/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Location getOpinionById(
+    public Location getLocationById(
             @PathVariable int id
     ){
         return locationService.findById(id);
@@ -34,7 +35,7 @@ public class LocationController {
     @PostMapping(
             path = "/location",
             consumes=MediaType.APPLICATION_JSON_VALUE)
-    public void postOpinion(
+    public void postLocation(
             @RequestBody Location location
     ){
         locationService.save(location);
@@ -42,9 +43,9 @@ public class LocationController {
     }
 
 
-    @GetMapping(
-            path = "/location/delete/{id}")
-    public void deleteOpinionById(
+    @DeleteMapping(
+            path = "/location/{id}")
+    public void deleteLocationById(
             @PathVariable int id
     ){
         locationService.deleteById(id);

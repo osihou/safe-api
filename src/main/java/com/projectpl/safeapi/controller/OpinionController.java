@@ -54,13 +54,15 @@ public class OpinionController {
 
     }
 
-    @GetMapping(
-            path = "/opinion/delete/{id}")
+    @DeleteMapping(
+            path = "/opinion/{id}"
+    )
     public void deleteOpinionById(
             @PathVariable int id
     ){
         opinionService.deleteById(id);
     }
+
 
 
 

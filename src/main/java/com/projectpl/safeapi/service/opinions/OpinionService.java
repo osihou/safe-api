@@ -33,6 +33,8 @@ public class OpinionService implements  IOpinionService {
         return opinionRepository.findByLocationKey(id);
     }
 
+
+
     @Override
     public void deleteById(int id) {
         opinionRepository.deleteById(id);

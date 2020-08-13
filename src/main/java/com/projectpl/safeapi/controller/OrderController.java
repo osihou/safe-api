@@ -48,7 +48,7 @@ public class OrderController {
 
         List<OrderProduct> orderProducts = new ArrayList<>();
         for (OrderProductDto dto : formDtos) {
-            orderProducts.add(orderProductService.create(new OrderProduct(order, productService.getProduct(dto
+            orderProducts.add(orderProductService.create(new OrderProduct(order, productService.getProductById(dto
                     .getProduct()
                     .getId()), dto.getQuantity())));
         }
@@ -71,7 +71,7 @@ public class OrderController {
     private void validateProductsExistence(List<OrderProductDto> orderProducts) {
         List<OrderProductDto> list = orderProducts
                 .stream()
-                .filter(op -> Objects.isNull(productService.getProduct(op
+                .filter(op -> Objects.isNull(productService.getProductById(op
                         .getProduct()
                         .getId())))
                 .collect(Collectors.toList());
