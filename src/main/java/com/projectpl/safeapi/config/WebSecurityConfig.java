@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests() .anyRequest().permitAll();
+                .authorizeRequests().anyRequest().permitAll();
         //.antMatchers("/*").permitAll()
                     //.antMatchers("/invalidSession*").anonymous()
                     //.anyRequest().hasAuthority("READ_PRIVILEGE")

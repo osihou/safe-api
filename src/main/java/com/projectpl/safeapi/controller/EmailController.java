@@ -14,8 +14,8 @@ public class EmailController {
 
     @GetMapping("/test_mail")
     String testMail() {
-        //emailService.sendMail("okeonx@gmail.com", "test", "test test \n test test");
-        //emailService.sendPreConfiguredMail("Weź się do roboty frajerze");
+        //emailService.sendMail();
+        //emailService.sendPreConfiguredMail();
         return "Email sent";
 
     }

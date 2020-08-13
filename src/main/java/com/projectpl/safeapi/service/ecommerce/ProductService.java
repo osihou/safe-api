@@ -26,7 +26,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product getProduct(long id) {
+    public Product getProductById(long id) {
         return productRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
@@ -36,6 +36,8 @@ public class ProductService implements IProductService {
     public Product save(Product product) {
         return productRepository.save(product);
     }
+
+
 
     public Product create(Product product) {
         return productRepository.save(product);
