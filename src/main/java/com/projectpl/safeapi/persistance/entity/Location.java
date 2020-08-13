@@ -12,7 +12,8 @@ public class Location implements Serializable {
     private Integer id;
     private String name;
     private String address;
-    private Integer user_key;
+    private int user_key;
+
 
     public Location() {
     }
@@ -21,11 +22,12 @@ public class Location implements Serializable {
             Integer id,
             String name,
             String address,
-            Integer user) {
+            int user_key
+    ) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.user_key = user;
+        this.user_key = user_key;
     }
 
     public Integer getId() {
@@ -52,11 +54,11 @@ public class Location implements Serializable {
         this.address = address;
     }
 
-    public Integer getUser_key() {
+    public int getUser_key() {
         return user_key;
     }
 
-    public void setUser_key(Integer user_key) {
+    public void setUser_key(int user_key) {
         this.user_key = user_key;
     }
 }

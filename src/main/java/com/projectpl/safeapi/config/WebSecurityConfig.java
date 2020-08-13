@@ -19,48 +19,44 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService userDetailsService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth)  {
-        auth.authenticationProvider(authProvider());
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth)  {
+//        auth.authenticationProvider(authProvider());
+    //}
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests()
-                    .antMatchers("/login*", "/logout*", "/signin/**", "/signup/**", "/customLogin","/test_mail","/pdf_report",
-                            "/user/registration*", "/registrationConfirm*", "/expiredAccount*", "/registration*",
-                        "/badUser*", "/user/resendRegistrationToken*" ,"/forgetPassword*", "/user/resetPassword*","/user/savePassword*","/updatePassword*",
-                        "/user/changePassword*", "/emailError*", "/resources/**","/old/user/registration*","/successRegister*","/qrcode*","/user/enableNewLoc*").permitAll()
-                    .antMatchers("/invalidSession*").anonymous()
-                    .antMatchers("/user/updatePassword*").hasAuthority("CHANGE_PASSWORD_PRIVILEGE")
-                    .anyRequest().hasAuthority("READ_PRIVILEGE")
-                    .and()
-                .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/homepage.html")
-                    .failureUrl("/login?error=true")
-                   // .successHandler(customLoginAuthenticationSuccessHandler)
-                    //.failureHandler(customAuthenticationFailureHandler)
-                    //.authenticationDetailsSource(authenticationDetailsSource)
-                .permitAll()
-                    .and()
-                .sessionManagement()
-                    .invalidSessionUrl("/invalidSession.html")
-                    //.maximumSessions(1).sessionRegistry(sessionRegistry()).and()
-                    //.sessionFixation().none()
-                .and()
-                    .logout()
-                    //.logoutSuccessHandler(myLogoutSuccessHandler)
-                    .invalidateHttpSession(false)
-                    //.logoutSuccessUrl("/logout.html?logSucc=true")
-                    //.deleteCookies("JSESSIONID")
-                    .permitAll()
-                .and()
-                    //.rememberMe().rememberMeServices(rememberMeServices()).key("theKey")
-                    //.and()
-                .headers().frameOptions().disable();
+                .authorizeRequests() .anyRequest().permitAll();
+        //.antMatchers("/*").permitAll()
+                    //.antMatchers("/invalidSession*").anonymous()
+                    //.anyRequest().hasAuthority("READ_PRIVILEGE")
+//                    .and()
+//                .formLogin()
+//                    .loginPage("/login")
+//                    .defaultSuccessUrl("/homepage.html")
+//                    .failureUrl("/login?error=true")
+//                   // .successHandler(customLoginAuthenticationSuccessHandler)
+//                    //.failureHandler(customAuthenticationFailureHandler)
+//                    //.authenticationDetailsSource(authenticationDetailsSource)
+//                .permitAll()
+//                    .and()
+//                .sessionManagement()
+//                    .invalidSessionUrl("/invalidSession.html")
+//                    //.maximumSessions(1).sessionRegistry(sessionRegistry()).and()
+//                    //.sessionFixation().none()
+//                .and()
+//                    .logout()
+//                    //.logoutSuccessHandler(myLogoutSuccessHandler)
+//                    .invalidateHttpSession(false)
+//                    //.logoutSuccessUrl("/logout.html?logSucc=true")
+//                    //.deleteCookies("JSESSIONID")
+//                    .permitAll()
+//                .and()
+//                    //.rememberMe().rememberMeServices(rememberMeServices()).key("theKey")
+//                    //.and()
+//                .headers().frameOptions().disable();
     }
 
     @Bean

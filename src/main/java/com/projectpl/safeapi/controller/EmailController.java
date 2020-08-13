@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmailController {
 
-    @Autowired
-    private EmailService emailService;
+//    @Autowired
+//    private EmailService emailService;
 
 
     @GetMapping("/test_mail")
     String testMail() {
         //emailService.sendMail("okeonx@gmail.com", "test", "test test \n test test");
-        emailService.sendPreConfiguredMail("Weź się do roboty frajerze");
+        //emailService.sendPreConfiguredMail("Weź się do roboty frajerze");
         return "Email sent";
 
     }
