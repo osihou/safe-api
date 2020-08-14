@@ -15,11 +15,11 @@ import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @RestController
-public class DataController implements IDataController {
+public class DataController {
 
     @GetMapping("/home")
     String home(){
-        return "Its working";
+        return ":)";
     }
 
     @Autowired
