@@ -13,4 +13,6 @@ public interface ILocationService {
     void deleteById(int id);
 
     Location updateLocation(Location newLocation, int id);
+
+    Iterable<Location> findByNameOrAddressContaining(String infix);
 }

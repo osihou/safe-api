@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/opinion")
 public class OpinionController {
 
     @Autowired
@@ -14,7 +15,7 @@ public class OpinionController {
 
 
     @RequestMapping(
-            path = "/opinion/all",
+            path = "/all",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -23,7 +24,7 @@ public class OpinionController {
     }
 
     @RequestMapping(
-            path = "/opinion/{id}",
+            path = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -34,7 +35,7 @@ public class OpinionController {
     }
 
     @RequestMapping(
-            path = "/opinion/location_id/{id}",
+            path = "/location_id/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -46,7 +47,7 @@ public class OpinionController {
 
 
     @RequestMapping(
-            path = "/opinion",
+            path = "",
             method = RequestMethod.POST,
             consumes=MediaType.APPLICATION_JSON_VALUE
     )
@@ -58,7 +59,7 @@ public class OpinionController {
     }
 
     @RequestMapping(
-            path = "/opinion/{id}",
+            path = "/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -70,7 +71,7 @@ public class OpinionController {
     }
 
     @RequestMapping(
-            path = "/opinion/{id}",
+            path = "/{id}",
             method = RequestMethod.DELETE
     )
     public void deleteOpinionById(
