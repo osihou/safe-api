@@ -37,6 +37,30 @@ public class ProductService implements IProductService {
         return productRepository.save(product);
     }
 
+    @Override
+    public Iterable<Product> findProductByType(String type) {
+       return productRepository.findProductByType(type);
+    }
+
+    @Override
+    public Product updateProduct(Product newProduct ,long id) {
+        return productRepository.findById(id)
+                .map(product -> {
+                    product.setDescription(newProduct.getDescription());
+                    product.setName(newProduct.getName());
+                    product.setPrice(newProduct.getPrice());
+                    product.setStatus(newProduct.isStatus());
+                    product.setType(newProduct.getType());
+                    return productRepository.save(product);
+
+                })
+
+                .orElseGet( () ->{
+                    newProduct.setId(id);
+                    productRepository.save(newProduct);
+                    return null;
+                });
+    }
 
 
     public Product create(Product product) {

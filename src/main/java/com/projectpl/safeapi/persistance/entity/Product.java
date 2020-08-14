@@ -24,11 +24,20 @@ public class Product {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "minor_type")
+    private String minorType;
+
     @Column(name = "description")
     private String description;
 
     @Column(name = "status")
     private boolean status;
+
+    @Column(name = "file_name")
+    private String fileName;
+
+    public Product() {
+    }
 
     public Long getId() {
         return id;
@@ -79,4 +88,19 @@ public class Product {
         this.status = status;
     }
 
+    public String getMinorType() {
+        return minorType;
+    }
+
+    public void setMinorType(String minorType) {
+        this.minorType = minorType;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 }

@@ -15,4 +15,7 @@ public interface IProductService {
 
     Product save(Product product);
 
+    Iterable<Product> findProductByType(String type);
+
+    Product updateProduct(Product newProduct ,long id);
 }
