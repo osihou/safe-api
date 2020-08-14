@@ -21,5 +21,5 @@ public interface IProductService {
 
     void deleteProductById(long id);
 
-    Iterable<Product> findProductByMinor(String minor);
+    Iterable<Product> findProductByName(String name);
 }

@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Iterable<Product> findProductByType(String type);
 
-    Iterable<Product> findByMinorType(String minor);
+    Iterable<Product> findByName(String name);
 }

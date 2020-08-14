@@ -69,8 +69,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Iterable<Product> findProductByMinor(String minor) {
-        return productRepository.findByMinorType(minor);
+    public Iterable<Product> findProductByName(String name) {
+        return productRepository.findByName(name);
     }
 
 
