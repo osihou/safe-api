@@ -18,4 +18,8 @@ public interface IProductService {
     Iterable<Product> findProductByType(String type);
 
     Product updateProduct(Product newProduct ,long id);
+
+    void deleteProductById(long id);
+
+    Iterable<Product> findProductByMinor(String minor);
 }

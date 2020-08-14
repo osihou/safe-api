@@ -69,6 +69,18 @@ public class ProductController {
     }
 
     @RequestMapping(
+            path = "/product/{type}/{minor}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Iterable<Product> getProductByMinorType(
+            @PathVariable String major,
+            @PathVariable String minor
+    ){
+        return productService.findProductByMinor(minor);
+    }
+
+    @RequestMapping(
             path = "/product",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE
@@ -77,6 +89,17 @@ public class ProductController {
             @RequestBody Product product
     ){
         productService.save(product);
+    }
+
+    @RequestMapping(
+            path = "/product/{id}",
+            method = RequestMethod.DELETE,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public void deleteProduct(
+            @PathVariable long id
+    ){
+        productService.deleteProductById(id);
     }
 
 
