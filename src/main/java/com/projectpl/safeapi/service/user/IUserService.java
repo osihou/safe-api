@@ -24,4 +24,10 @@ public interface IUserService {
     User getUser(String verificationToken);
 
     VerificationToken generateNewVerificationToken(String existingToken);
+
+    User getUserById(long id);
+
+    Iterable<User> getAllUsers();
+
+    void deleteUserById(long id);
 }

@@ -1,7 +1,7 @@
 package com.projectpl.safeapi.service.user;
 
 
-import com.projectpl.safeapi.errors.exceptions.EmailExistsException;
+import com.projectpl.safeapi.errors.exceptions.UserNotFoundException;
 import com.projectpl.safeapi.persistance.entity.User;
 import com.projectpl.safeapi.persistance.dto.UserDto;
 import com.projectpl.safeapi.errors.exceptions.UserAlreadyExistException;
@@ -11,8 +11,6 @@ import com.projectpl.safeapi.persistance.repository.VerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 import java.util.UUID;
 
 @Service
@@ -87,9 +85,28 @@ public class UserService implements IUserService {
         return user;
     }
 
+
     @Override
     public VerificationToken generateNewVerificationToken(String existingToken) {
         return null;
+    }
+
+    @Override
+    public User getUserById(long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(String.valueOf(id)));
+    }
+
+    @Override
+    public Iterable<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+
+    @Override
+    public void deleteUserById(long id) {
+        userRepository.deleteUserById(id);
+
     }
 
     private boolean emailExists(String email) {

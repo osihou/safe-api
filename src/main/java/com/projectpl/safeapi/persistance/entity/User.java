@@ -2,6 +2,7 @@ package com.projectpl.safeapi.persistance.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_table")
@@ -11,18 +12,26 @@ public class User {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String password;
-    private String email;
-    private String address;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "enabled")
     private boolean enabled;
 
-    //private List<String> roles;
-
+    @Column(name = "role")
     private String role;
 
     public Long getId() {
@@ -32,8 +41,6 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-
-
 
     public User(){
         super();
@@ -95,4 +102,12 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
+    public String hashUser() {
+        return String.valueOf(Objects.hash(id, firstName, lastName, email));
+    }
+
+
+
 }
