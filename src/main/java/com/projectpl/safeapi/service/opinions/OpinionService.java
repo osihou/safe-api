@@ -1,10 +1,8 @@
 package com.projectpl.safeapi.service.opinions;
 
 import com.projectpl.safeapi.errors.exceptions.LocationNotFoundException;
-import com.projectpl.safeapi.persistance.entity.Location;
 import com.projectpl.safeapi.persistance.entity.Opinion;
 import com.projectpl.safeapi.persistance.repository.OpinionRepository;
-import com.projectpl.safeapi.service.transactions.OpinionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -46,5 +44,29 @@ public class OpinionService implements  IOpinionService {
     @Override
     public void deleteById(int id) {
         opinionRepository.deleteById(id);
+    }
+
+    @Override
+    public Opinion updateOpinion(Opinion newOpinion, int id) {
+        return opinionRepository.findById(id)
+                .map(opinion -> {
+                    opinion.setLocationKey(newOpinion.getLocationKey());
+                    opinion.setService(newOpinion.getService());
+                    opinion.setImprovements(newOpinion.getImprovements());
+                    opinion.setEndorsement(newOpinion.getEndorsement());
+                    opinion.setConsumables(newOpinion.getConsumables());
+                    opinion.setEquipment(newOpinion.getEquipment());
+                    opinion.setScore(newOpinion.getScore());
+                    opinion.setCleanliness(newOpinion.getCleanliness());
+
+                    return opinionRepository.save(opinion);
+
+                })
+
+                .orElseGet( () ->{
+                    newOpinion.setId_score(id);
+                    opinionRepository.save(newOpinion);
+                    return null;
+                });
     }
 }

@@ -1,6 +1,5 @@
 package com.projectpl.safeapi.service.opinions;
 
-import com.projectpl.safeapi.persistance.entity.Location;
 import com.projectpl.safeapi.persistance.entity.Opinion;
 
 public interface IOpinionService {
@@ -13,4 +12,6 @@ public interface IOpinionService {
     Opinion findByLocationKey(int id);
 
     void deleteById(int id);
+
+     Opinion updateOpinion(Opinion newOpinion , int id);
 }

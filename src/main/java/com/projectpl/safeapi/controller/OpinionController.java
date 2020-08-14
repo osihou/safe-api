@@ -1,6 +1,5 @@
 package com.projectpl.safeapi.controller;
 
-import com.google.gson.internal.$Gson$Preconditions;
 import com.projectpl.safeapi.persistance.entity.Opinion;
 import com.projectpl.safeapi.service.opinions.OpinionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +13,18 @@ public class OpinionController {
     private OpinionService opinionService;
 
 
-    @GetMapping(
+    @RequestMapping(
             path = "/opinion/all",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Iterable<Opinion> getAll(){
         return opinionService.findAll();
     }
 
-    @GetMapping(
+    @RequestMapping(
             path = "/opinion/{id}",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Opinion getOpinionById(
@@ -32,8 +33,9 @@ public class OpinionController {
         return opinionService.findById(id);
     }
 
-    @GetMapping(
+    @RequestMapping(
             path = "/opinion/location_id/{id}",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Opinion getOpinionByScoreId(
@@ -43,8 +45,9 @@ public class OpinionController {
     }
 
 
-    @PostMapping(
+    @RequestMapping(
             path = "/opinion",
+            method = RequestMethod.POST,
             consumes=MediaType.APPLICATION_JSON_VALUE
     )
     public void postOpinion(
@@ -54,14 +57,29 @@ public class OpinionController {
 
     }
 
-    @DeleteMapping(
-            path = "/opinion/{id}"
+    @RequestMapping(
+            path = "/opinion/{id}",
+            method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public void putOpinion(
+            @RequestBody Opinion newOpinion,
+            @PathVariable int id
+    ){
+        opinionService.updateOpinion(newOpinion, id);
+    }
+
+    @RequestMapping(
+            path = "/opinion/{id}",
+            method = RequestMethod.DELETE
     )
     public void deleteOpinionById(
             @PathVariable int id
     ){
         opinionService.deleteById(id);
     }
+
+
 
 
 
