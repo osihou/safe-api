@@ -62,6 +62,17 @@ public class ProductService implements IProductService {
                 });
     }
 
+    @Override
+    public void deleteProductById(long id) {
+        productRepository.deleteById(id);
+
+    }
+
+    @Override
+    public Iterable<Product> findProductByName(String name) {
+        return productRepository.findByName(name);
+    }
+
 
     public Product create(Product product) {
         return productRepository.save(product);
