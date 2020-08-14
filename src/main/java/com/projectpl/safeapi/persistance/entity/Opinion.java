@@ -32,7 +32,8 @@ public class Opinion {
     @Column(name = "endorsement")
     private int endorsement;
 
-    @Column(name = "location_key", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "location_key")
     private int locationKey;
 
 
