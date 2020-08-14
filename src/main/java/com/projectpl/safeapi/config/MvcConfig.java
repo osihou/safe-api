@@ -28,6 +28,9 @@ public class MvcConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:uploads/");
     }
 
     @Override
@@ -56,4 +59,5 @@ public class MvcConfig implements WebMvcConfigurer {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
 
     }
+
 }

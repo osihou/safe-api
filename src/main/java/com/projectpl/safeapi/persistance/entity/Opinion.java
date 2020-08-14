@@ -8,6 +8,7 @@ public class Opinion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_score")
     private Integer id_score;
 
     private int score;
@@ -18,6 +19,7 @@ public class Opinion {
     private int consumables;
     private int endorsement;
 
+    @Column(name = "location_key")
     private int locationKey;
 
     public Opinion() {
