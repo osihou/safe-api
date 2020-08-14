@@ -4,11 +4,17 @@ import com.projectpl.safeapi.errors.exceptions.LocationNotFoundException;
 import com.projectpl.safeapi.persistance.entity.Location;
 import com.projectpl.safeapi.persistance.entity.Opinion;
 import com.projectpl.safeapi.persistance.repository.OpinionRepository;
+import com.projectpl.safeapi.service.transactions.OpinionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OpinionService implements  IOpinionService {
+
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private OpinionRepository opinionRepository;
@@ -30,7 +36,7 @@ public class OpinionService implements  IOpinionService {
 
     @Override
     public Opinion findByLocationKey(int id) {
-        return opinionRepository.findByLocationKey(id);
+        return jdbcTemplate.query("SELECT * FROM opinions_table3 where location_key = "+id, new OpinionMapper()).get(0);
     }
 
 
