@@ -11,4 +11,6 @@ public interface ILocationService {
     Location save(Location newLocation);
 
     void deleteById(int id);
+
+    Location updateLocation(Location newLocation, int id);
 }

@@ -46,6 +46,18 @@ public class LocationController {
 
     }
 
+    @RequestMapping(
+            path = "/location/{id}",
+            method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE
+    )
+    public void updateLocation(
+            @RequestBody Location newLocation,
+            @PathVariable int id
+    ){
+        locationService.updateLocation(newLocation, id);
+    }
+
 
     @RequestMapping(
             path = "/location/{id}",

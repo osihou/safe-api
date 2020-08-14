@@ -36,6 +36,25 @@ public class LocationService implements  ILocationService{
         locationRepository.deleteById(id);
     }
 
+    @Override
+    public Location updateLocation(Location newLocation, int id) {
+
+        return locationRepository.findById(id)
+                .map(location -> {
+                    location.setAddress(newLocation.getAddress());
+                    location.setName(newLocation.getName());
+                    location.setUser_key(newLocation.getUser_key());
+                    return locationRepository.save(location);
+
+                })
+
+                .orElseGet( () ->{
+                    newLocation.setId(id);
+                    locationRepository.save(newLocation);
+                    return null;
+                });
+
+    }
 
 
 }
