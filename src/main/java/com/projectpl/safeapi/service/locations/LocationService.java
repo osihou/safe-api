@@ -56,5 +56,10 @@ public class LocationService implements  ILocationService{
 
     }
 
+    @Override
+    public Iterable<Location> findByNameOrAddressContaining(String infix) {
+        return locationRepository.findByNameContainingOrAddressContaining(infix, infix);
+    }
+
 
 }

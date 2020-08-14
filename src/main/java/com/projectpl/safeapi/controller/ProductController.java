@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 
 
-@RestController
+@RestController()
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @RequestMapping(
-            path = "/product/all",
+            path = "/all",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -26,18 +27,18 @@ public class ProductController {
     }
 
     @RequestMapping(
-            path = "/product/{id}",
+            path = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Product getProductById(
-            @PathVariable int id
+            @PathVariable long id
     ){
         return productService.getProductById(id);
     }
 
     @RequestMapping(
-            path = "/product/{id}",
+            path = "/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -49,7 +50,7 @@ public class ProductController {
     }
 
     @RequestMapping(
-            path = "/product/types/all",
+            path = "/types/all",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -58,7 +59,7 @@ public class ProductController {
     }
 
     @RequestMapping(
-            path = "/product/{type}",
+            path = "/find/{type}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -69,7 +70,7 @@ public class ProductController {
     }
 
     @RequestMapping(
-            path = "/product/{type}/{name}",
+            path = "/find/{type}/{name}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -81,7 +82,7 @@ public class ProductController {
     }
 
     @RequestMapping(
-            path = "/product",
+            path = "",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -92,7 +93,7 @@ public class ProductController {
     }
 
     @RequestMapping(
-            path = "/product/{id}",
+            path = "/{id}",
             method = RequestMethod.DELETE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )

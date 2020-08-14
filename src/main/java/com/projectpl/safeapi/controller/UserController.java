@@ -7,13 +7,14 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
     @RequestMapping(
-            path = "/users/{id}",
+            path = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @RequestMapping(
-            path = "/users/all",
+            path = "",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @RequestMapping(
-            path = "/users/hash/{id}",
+            path = "/hash/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -46,7 +47,7 @@ public class UserController {
 
     //TBD
     @RequestMapping(
-            path = "/users",
+            path = "",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -57,7 +58,7 @@ public class UserController {
     }
 
     @RequestMapping(
-            path = "/users/{id}",
+            path = "/{id}",
             method = RequestMethod.DELETE,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )

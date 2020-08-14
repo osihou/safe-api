@@ -9,13 +9,14 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/location")
 public class LocationController {
     @Autowired
     private LocationService locationService;
 
 
     @RequestMapping(
-            path = "/location/all",
+            path = "/all",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -24,7 +25,7 @@ public class LocationController {
     }
 
     @RequestMapping(
-            path = "/location/{id}",
+            path = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -35,7 +36,7 @@ public class LocationController {
     }
 
     @RequestMapping(
-            path = "/location",
+            path = "",
             method = RequestMethod.POST,
             consumes=MediaType.APPLICATION_JSON_VALUE
     )
@@ -47,7 +48,7 @@ public class LocationController {
     }
 
     @RequestMapping(
-            path = "/location/{id}",
+            path = "/{id}",
             method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE
     )
@@ -60,7 +61,7 @@ public class LocationController {
 
 
     @RequestMapping(
-            path = "/location/{id}",
+            path = "/{id}",
             method = RequestMethod.DELETE
     )
     public void deleteLocationById(
@@ -68,6 +69,23 @@ public class LocationController {
     ){
         locationService.deleteById(id);
     }
+
+    @RequestMapping(
+            path = "/containing/{infix}",
+            method = RequestMethod.GET,
+            produces=MediaType.APPLICATION_JSON_VALUE
+    )
+    public Iterable<Location> findByNameOrAddressContaining(
+
+            @PathVariable String infix
+    ){
+        return locationService.findByNameOrAddressContaining(infix);
+    }
+
+
+
+
+
 
 
 

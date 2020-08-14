@@ -21,6 +21,7 @@ import javax.validation.Valid;
 
 
 @RestController
+@RequestMapping("/image")
 public class ImageUploadController {
 
     public static String uploadDirectory = System.getProperty("user.dir");
@@ -30,7 +31,7 @@ public class ImageUploadController {
 
 
     @RequestMapping(
-            path = "/image/all",
+            path = "",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -40,7 +41,7 @@ public class ImageUploadController {
     }
 
     @RequestMapping(
-            path = "/image/types",
+            path = "/types",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )public Iterable<ImageTypes> getAllTypes(){
@@ -49,7 +50,7 @@ public class ImageUploadController {
 
 
     @RequestMapping(
-            value = "/image/{type}/{name}",
+            value = "/get/{type}/{name}",
             method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE
     )
