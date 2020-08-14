@@ -6,6 +6,8 @@ import com.projectpl.safeapi.persistance.entity.Location;
 import com.projectpl.safeapi.errors.exceptions.LocationNotFoundException;
 import com.projectpl.safeapi.persistance.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -21,6 +23,8 @@ public class LocationService implements  ILocationService{
         return locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException(id));
     }
+
+
 
     public Iterable<Location> findAll() {
         return locationRepository.findAll();
@@ -59,6 +63,11 @@ public class LocationService implements  ILocationService{
     @Override
     public Iterable<Location> findByNameOrAddressContaining(String infix) {
         return locationRepository.findByNameContainingOrAddressContaining(infix, infix);
+    }
+
+    @Override
+    public Iterable<Location> findTop20() {
+        return locationRepository.findAll(PageRequest.of(0,20));
     }
 
 

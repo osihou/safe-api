@@ -5,6 +5,9 @@ import com.projectpl.safeapi.persistance.entity.Location;
 import com.projectpl.safeapi.persistance.entity.Opinion;
 import com.projectpl.safeapi.service.locations.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,16 @@ public class LocationController {
     )
     public Iterable<Location> getAll(){
         return locationService.findAll();
+
+    }
+
+    @RequestMapping(
+            path = "/top20",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Iterable<Location> getTop20(){
+        return locationService.findTop20();
     }
 
     @RequestMapping(
