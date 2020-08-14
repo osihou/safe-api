@@ -3,7 +3,7 @@ package com.projectpl.safeapi.persistance.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "opinions_table3")
+@Table(name = "opinions_table_test")
 public class Opinion {
 
     @Id
@@ -11,16 +11,31 @@ public class Opinion {
     @Column(name = "id_score")
     private Integer id_score;
 
+    @Column(name = "score")
     private int score;
+
+    @Column(name = "cleanliness")
     private int cleanliness;
+
+    @Column(name = "service")
     private int service;
+
+    @Column(name = "improvements")
     private int improvements;
+
+    @Column(name = "equipment")
     private int equipment;
+
+    @Column(name = "consumables")
     private int consumables;
+
+    @Column(name = "endorsement")
     private int endorsement;
 
-    @Column(name = "location_key")
+    @Column(name = "location_key", unique = true)
     private int locationKey;
+
+
 
     public Opinion() {
     }

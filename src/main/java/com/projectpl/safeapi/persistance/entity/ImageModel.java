@@ -2,7 +2,7 @@ package com.projectpl.safeapi.persistance.entity;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "images_table3")
+@Table(name = "images_table_test")
 public class ImageModel {
 
     @Id

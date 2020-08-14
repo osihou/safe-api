@@ -1,6 +1,7 @@
 package com.projectpl.safeapi.controller;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -22,7 +23,7 @@ import javax.validation.Valid;
 @RestController
 public class ImageUploadController {
 
-    public static String uploadDirectory = System.getProperty("user.dir") + "/uploads";
+    public static String uploadDirectory = System.getProperty("user.dir");
 
     @Autowired
     ImageService imageService;
@@ -57,7 +58,9 @@ public class ImageUploadController {
             @PathVariable String type
     ) throws IOException {
 
-        PathResource imgFile  = new PathResource("uploads/"+type+"/"+name+".jpg");
+        PathResource imgFile = new PathResource(uploadDirectory+"/uploads/"+type+"/"+name+".jpg");
+
+        //ClassPathResource imgFile  = new ClassPathResource("uploads/"+type+"/"+name+".jpg");
 
         return ResponseEntity
                 .ok()
