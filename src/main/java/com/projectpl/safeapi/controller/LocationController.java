@@ -14,16 +14,18 @@ public class LocationController {
     private LocationService locationService;
 
 
-    @GetMapping(
+    @RequestMapping(
             path = "/location/all",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Iterable<Location> getAll(){
         return locationService.findAll();
     }
 
-    @GetMapping(
+    @RequestMapping(
             path = "/location/{id}",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Location getLocationById(
@@ -32,9 +34,11 @@ public class LocationController {
         return locationService.findById(id);
     }
 
-    @PostMapping(
+    @RequestMapping(
             path = "/location",
-            consumes=MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.POST,
+            consumes=MediaType.APPLICATION_JSON_VALUE
+    )
     public void postLocation(
             @RequestBody Location location
     ){
@@ -43,8 +47,10 @@ public class LocationController {
     }
 
 
-    @DeleteMapping(
-            path = "/location/{id}")
+    @RequestMapping(
+            path = "/location/{id}",
+            method = RequestMethod.DELETE
+    )
     public void deleteLocationById(
             @PathVariable int id
     ){

@@ -8,29 +8,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "products_table")
+@Table(name = "products_table_test")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "price")
     private BigDecimal price;
 
-    @Column
+    @Column(name = "type")
     private String type;
 
-    @Column
-    private int quantity;
-
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @Column
+    @Column(name = "status")
     private boolean status;
 
     public Long getId() {
@@ -65,13 +62,6 @@ public class Product {
         this.type = type;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public String getDescription() {
         return description;

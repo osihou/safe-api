@@ -36,7 +36,9 @@ public class OpinionService implements  IOpinionService {
 
     @Override
     public Opinion findByLocationKey(int id) {
-        return jdbcTemplate.query("SELECT * FROM opinions_table3 where location_key = "+id, new OpinionMapper()).get(0);
+
+        return opinionRepository.findByLocationKey(id);
+        //return jdbcTemplate.query("SELECT * FROM opinions_table3 where location_key = "+id, new OpinionMapper()).get(0);
     }
 
 

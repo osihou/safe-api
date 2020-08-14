@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "orders_table")
+@Table(name = "orders_table_test")
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="orderProducts")
 public class Order {
 
@@ -21,8 +21,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonFormat(pattern = "dd/MM/yyyy") private LocalDate dateCreated;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "date_created")
+    private LocalDate dateCreated;
 
+    @Column(name = "status")
     private String status;
 
     @OneToMany(mappedBy = "pk.order")
