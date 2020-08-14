@@ -58,9 +58,9 @@ public class ImageUploadController {
             @PathVariable String type
     ) throws IOException {
 
-        PathResource imgFile = new PathResource(uploadDirectory+"/uploads/"+type+"/"+name+".jpg");
+        //PathResource imgFile = new PathResource(uploadDirectory+"/uploads/"+type+"/"+name+".jpg");
 
-        //ClassPathResource imgFile  = new ClassPathResource("uploads/"+type+"/"+name+".jpg");
+        ClassPathResource imgFile  = new ClassPathResource("image/"+type+"/"+name+".jpg");
 
         return ResponseEntity
                 .ok()

@@ -30,8 +30,8 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-        registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:uploads/");
+//        registry.addResourceHandler("/uploads/**")
+//                .addResourceLocations("file:uploads/");
     }
 
     @Override
