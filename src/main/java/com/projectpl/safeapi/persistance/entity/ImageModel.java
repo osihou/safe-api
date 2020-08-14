@@ -2,44 +2,81 @@ package com.projectpl.safeapi.persistance.entity;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "image_table")
+@Table(name = "images_table3")
 public class ImageModel {
-    public ImageModel() {
-        super();
-    }
-    public ImageModel(String name, String type, byte[] picByte) {
-        this.name = name;
-        this.type = type;
-        this.picByte = picByte;
-    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "type")
-    private String type;
-    //image bytes can have large lengths so we specify a value
-    //which is more than the default length for picByte column
-    @Column(name = "picByte", length = 1000)
-    private byte[] picByte;
-    public String getName() {
-        return name;
+
+    @Column(name = "file_name")
+    private String fileName;
+
+    @Column(name = "file_path")
+    private String filePath;
+
+    @Column(name = "file_type")
+    private String fileType;
+
+    @Column(name = "file_size")
+    private String fileSize;
+
+
+    public ImageModel() {
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public ImageModel(
+            Long id,
+            String fileName,
+            String filePath,
+            String fileType,
+            String fileSize
+    ) {
+        this.id = id;
+        this.fileName = fileName;
+        this.filePath = filePath;
+        this.fileType = fileType;
+        this.fileSize = fileSize;
     }
-    public String getType() {
-        return type;
+
+    public Long getId() {
+        return id;
     }
-    public void setType(String type) {
-        this.type = type;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    public byte[] getPicByte() {
-        return picByte;
+
+    public String getFileName() {
+        return fileName;
     }
-    public void setPicByte(byte[] picByte) {
-        this.picByte = picByte;
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public String getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(String fileSize) {
+        this.fileSize = fileSize;
     }
 }

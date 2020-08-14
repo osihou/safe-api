@@ -1,79 +1,124 @@
 package com.projectpl.safeapi.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.zip.DataFormatException;
-import java.util.zip.Deflater;
-import java.util.zip.Inflater;
+import java.io.*;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
+import com.projectpl.safeapi.persistance.entity.ImageTypes;
+import com.projectpl.safeapi.service.images.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.PathResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.projectpl.safeapi.persistance.repository.ImageRepository;
 import com.projectpl.safeapi.persistance.entity.ImageModel;
+
+import javax.validation.Valid;
+
+
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(path = "image")
 public class ImageUploadController {
+
+    public static String uploadDirectory = System.getProperty("user.dir") + "/uploads";
+
     @Autowired
-    ImageRepository imageRepository;
-    @PostMapping("/upload")
-    public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file) throws IOException {
-        System.out.println("Original Image Byte Size - " + file.getBytes().length);
-        ImageModel img = new ImageModel(file.getOriginalFilename(), file.getContentType(),
-                compressBytes(file.getBytes()));
-        imageRepository.save(img);
-        return ResponseEntity.status(HttpStatus.OK);
+    ImageService imageService;
+
+
+    @RequestMapping(
+            path = "/image/all",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Iterable<ImageModel> getAllImages(){
+        System.out.println(uploadDirectory);
+        return imageService.findAll();
     }
-    @GetMapping(path = { "/get/{imageName}" })
-    public ImageModel getImage(@PathVariable("imageName") String imageName) throws IOException {
-        final Optional<ImageModel> retrievedImage = imageRepository.findByName(imageName);
-        ImageModel img = new ImageModel(retrievedImage.get().getName(), retrievedImage.get().getType(),
-                decompressBytes(retrievedImage.get().getPicByte()));
-        return img;
+
+    @RequestMapping(
+            path = "/image/types",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )public Iterable<ImageTypes> getAllTypes(){
+        return Arrays.asList(ImageTypes.values());
     }
-    // compress the image bytes before storing it in the database
-    public static byte[] compressBytes(byte[] data) {
-        Deflater deflater = new Deflater();
-        deflater.setInput(data);
-        deflater.finish();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-        byte[] buffer = new byte[1024];
-        while (!deflater.finished()) {
-            int count = deflater.deflate(buffer);
-            outputStream.write(buffer, 0, count);
-        }
-        try {
-            outputStream.close();
-        } catch (IOException e) {
-        }
-        System.out.println("Compressed Image Byte Size - " + outputStream.toByteArray().length);
-        return outputStream.toByteArray();
+
+
+    @RequestMapping(
+            value = "/image/{type}/{name}",
+            method = RequestMethod.GET,
+            produces = MediaType.IMAGE_JPEG_VALUE
+    )
+    public ResponseEntity<InputStreamResource> getImage(
+            @PathVariable String name,
+            @PathVariable String type
+    ) throws IOException {
+
+        PathResource imgFile  = new PathResource("uploads/"+type+"/"+name+".jpg");
+
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(new InputStreamResource(imgFile.getInputStream()));
     }
-    // uncompress the image bytes before returning it to the angular application
-    public static byte[] decompressBytes(byte[] data) {
-        Inflater inflater = new Inflater();
-        inflater.setInput(data);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-        byte[] buffer = new byte[1024];
-        try {
-            while (!inflater.finished()) {
-                int count = inflater.inflate(buffer);
-                outputStream.write(buffer, 0, count);
-            }
-            outputStream.close();
-        } catch (IOException ioe) {
-        } catch (DataFormatException e) {
-        }
-        return outputStream.toByteArray();
+
+
+//    @RequestMapping(
+//            path = "/eol/image",
+//            method = RequestMethod.POST,
+//            consumes = { MediaType.APPLICATION_JSON_VALUE,  MediaType.MULTIPART_FORM_DATA_VALUE}
+//
+//    )
+//    public void upploadImageFile(
+//            final @RequestParam("file") MultipartFile file
+//    ) throws IOException {
+//
+//        String fileName = file.getOriginalFilename();
+//        String filePath = Paths.get(uploadDirectory, fileName).toString();
+//        String fileType = file.getContentType();
+//        long size = file.getSize();
+//        String fileSize = String.valueOf(size);
+//
+//        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
+//        stream.write(file.getBytes());
+//        stream.close();
+//
+//        imageModel.setFileName(fileName);
+//        imageModel.setFilePath(filePath);
+//        imageModel.setFileSize(fileSize);
+//        imageModel.setFileType(fileType);
+//
+//        imageService.save(imageModel);
+//
+//    }
+
+    @RequestMapping(
+            path = "/eol/image/id/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ImageModel getImageById(
+            @PathVariable long id
+    ){
+        return imageService.findById(id);
     }
+
+    @RequestMapping(
+            path = "/eol/image/name/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ImageModel getImageById(
+            @PathVariable String name
+    ){
+        return imageService.findByFileName(name);
+    }
+
+
+
+
+
 }
