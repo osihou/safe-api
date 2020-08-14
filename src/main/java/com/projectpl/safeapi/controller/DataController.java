@@ -24,10 +24,14 @@ public class DataController {
 
     @Autowired
     private IOpinionService opinionService;
+
+
     @RequestMapping(
             value = "/pdf_report",
             method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_PDF_VALUE)
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    @CrossOrigin(origins = "*")
     public ResponseEntity<InputStreamResource> opinionsReport() {
 
         List<Opinion> opinions = (List<Opinion>) opinionService.findAll();
