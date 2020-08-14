@@ -1,13 +1,11 @@
 package com.projectpl.safeapi.controller;
 
-import com.projectpl.safeapi.persistance.entity.ImageTypes;
+import com.projectpl.safeapi.persistance.entity.Product;
 import com.projectpl.safeapi.persistance.entity.ProductMajorTypes;
 import com.projectpl.safeapi.service.ecommerce.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import com.projectpl.safeapi.persistance.entity.Product;
 
 import java.util.Arrays;
 
