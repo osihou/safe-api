@@ -1,29 +1,33 @@
 
+![ALTTEXT](images/logo.png)
 
-![ALTTEXT](./src/main/resources/image/logo.png)
-
-
+# Azure  Spring Cloud 
 ## Current Project Status
 We are team of inspiriting developers trying to solve most important issues. 
-Currently, we are working with Azure Spring Cloud to develop the best solution.
+Currently, we are working with Azure Spring Cloud to develop the best solution and make a world a better place.
 
 ## Introduction 
 
-ForeSights is enterprise extensible ecommerce solution. 
-With Core backend using JAVA Spring (Spring boot), REST APIs & Frontend using HTML, CSS and JS. 
+ForeSights is enterprise extensible ecommerce solution with core backend in Java Spring Boot. 
 
 ## Key Features and Technologies  
 
 ### Spring 
 Spring framework is an open source Java platform that 
-provides comprehensive infrastructure support for developing robust Java applications very easily and very rapidly.
+provides comprehensive infrastructure support for developing robust 
+Java applications very easily and very rapidly.
 
 ### Azure 
 Cloud computing service created by Microsoft for building, testing, deploying, 
 and managing applications and services through Microsoft-managed data centers. 
 Used by us mostly for developing and testing our solution.
 
+### SQL Azure Database
+For our data management we use SQL Database. It  works to create, 
+scale and extend applications into the cloud using Microsoft SQL Server technology. 
+It also integrates with Active Directory and Microsoft System Center and Hadoop.
+
 ### Email & Generated PDF Reports
 Our solution can provide our users with updates using email services.
-We also provide regular analysis of comment and on such basis we determine our safety score.
+We also provide regular analysis of comments and on such basis we determine our safety score.
 
