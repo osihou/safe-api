@@ -3,8 +3,7 @@
 
 # Azure  Spring Cloud 
 ## Current Project Status
-We are team of inspiriting developers trying to solve most important issues. 
-Currently, we are working with Azure Spring Cloud to develop the best solution and make a world a better place.
+EOL 1.10.2020
 
 ## Introduction 
 
@@ -25,7 +24,6 @@ Used by us mostly for developing and testing our solution.
 ### SQL Azure Database
 For our data management we use SQL Database. It  works to create, 
 scale and extend applications into the cloud using Microsoft SQL Server technology. 
-It also integrates with Active Directory and Microsoft System Center and Hadoop.
 
 ### Email & Generated PDF Reports
 Our solution can provide our users with updates using email services.
