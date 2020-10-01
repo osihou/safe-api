@@ -1,5 +1,6 @@
 package com.projectpl.safeapi.controller;
 
+import com.itextpdf.text.DocumentException;
 import com.projectpl.safeapi.persistance.entity.Opinion;
 import com.projectpl.safeapi.service.email.EmailService;
 import com.projectpl.safeapi.service.opinions.IOpinionService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -34,7 +36,7 @@ public class DataController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
     @CrossOrigin(origins = "*")
-    public ResponseEntity<InputStreamResource> opinionsReport() {
+    public ResponseEntity<InputStreamResource> opinionsReport() throws DocumentException, IOException, URISyntaxException {
 
         List<Opinion> opinions = (List<Opinion>) opinionService.findAll();
 
