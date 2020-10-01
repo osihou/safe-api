@@ -1,13 +1,13 @@
 
 ![ALTTEXT](images/logo.png)
 
-# Azure  Spring Cloud 
+# ForeSights back-end
 ## Current Project Status
 EOL 1.10.2020
 
 ## Introduction 
 
-ForeSights is enterprise extensible ecommerce solution with core backend in Java Spring Boot. 
+ForeSights is enterprise extensible ecommerce solution with core backend in Azure Spring Cloud. 
 
 ## Key Features and Technologies  
 
