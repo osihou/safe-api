@@ -11,14 +11,13 @@ target/
 .settings
 .springBeans
 .sts4-cache
-s
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
 
 shells
 *.txt
