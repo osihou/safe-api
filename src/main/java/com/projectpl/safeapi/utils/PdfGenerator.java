@@ -33,8 +33,8 @@ public class PdfGenerator {
     @Autowired
     private static LocationService locationService;
 
-    public static PdfGenerator ByteArrayInputStream (byte[] buf) {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
+    public static void main(String[] args) {
+
         try {
             int id=100010;//Test only!!! I'll get it from the frontend
 
@@ -523,7 +523,6 @@ public class PdfGenerator {
         } catch (DocumentException e) {
             e.printStackTrace();
         }
-        return new PdfGenerator(out.toByteArray());
     }
 
     public static String percentagesCounting(int myPoints,int theirPoints){
